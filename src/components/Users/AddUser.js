@@ -10,18 +10,21 @@ const AddUser = (props) => {
     const addUserHandler = (e) => {
         e.preventDefault();
         if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
-            return null;
+            return;
         }
         if (+enteredAge < 1) {
-            return null;
+            return;
         }
-        console.log(enteredUsername , enteredAge);
+        // console.log(props);
+        props.onAddUser(enteredUsername , enteredAge);
         setEnteredUsername('');
         setEnteredAge('');
     };
+
     const usernameChangeHandler = (e) => {
         setEnteredUsername(e.target.value);
     };
+
     const ageChangeHandler = (e) => {
         setEnteredAge(e.target.value);
     };
